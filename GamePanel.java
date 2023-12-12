@@ -18,7 +18,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
 
-    Player player;
+    Player player = new Player(this, keyHandler);
+    TileManager tile = new TileManager(this);
 
     public GamePanel() {
 
@@ -27,8 +28,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true); // Improve render performance
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
-
-        player = new Player(this, keyHandler);
     }
 
     public void startGameThread() {
@@ -45,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         while (gameThread != null) {
 
-            System.out.println("game loop");
+            System.out.println(player.spriteCounter);
 
             update();
 
@@ -80,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D altGraphic = (Graphics2D) graphic;
 
+        tile.draw(altGraphic);
         player.draw(altGraphic);
 
         altGraphic.dispose();

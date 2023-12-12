@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class Player extends Entity {
@@ -99,7 +98,7 @@ public class Player extends Entity {
 
         altGraphic.drawImage(image, x, y, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
 
-        if (spriteCounter == 10) {
+        if (spriteCounter >= 10) {
             if (spriteNum == 1)
                 spriteNum = 2;
             else
